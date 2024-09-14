@@ -1,0 +1,353 @@
+set $mod Mod4
+
+# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
+# screen before suspend. Use loginctl lock-session to lock your screen.
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c 000000 --nofork
+
+# NetworkManager is the most popular way to manage wireless networks on Linux,
+# and nm-applet is a desktop environment-independent system tray GUI for it.
+exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
+exec --no-startup-id brightnessctl
+exec --no-startup-id gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+
+font pango:DejaVu Sans Mono 8
+floating_modifier $mod
+
+# bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec kitty
+bindsym F1 exec i3-dmenu-desktop
+
+default_border pixel 1
+default_floating_border pixel 0
+hide_edge_borders smart
+focus_on_window_activation focus
+client.focused_inactive #333333 #5f678a #ffffff #484e50   #5f676a
+client.focused          #73daca #0E191f  #73daca #73daca #73daca
+workspace_layout tabbed
+for_window [all] title_window_icon padding 1px
+workspace_auto_back_and_forth yes
+focus_follows_mouse no
+mouse_warping output
+
+mode "resize" {
+  bindsym h resize shrink width 10 px or 10 ppt
+  bindsym k resize shrink height 10 px or 10 ppt
+  bindsym l resize grow width 10 px or 10 ppt
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym j resize grow height 10 px or 10 ppt
+  bindsym space mode "default"
+}
+bindsym $mod+r mode "resize"
+
+#set $mods Mod3
+ set $mods Mod2
+# set $mod Mod4
+# set $mod1 Mod1
+set $sm eDP
+set $fm HDMI-A-0
+workspace 1 output $fm
+workspace 2 output $fm
+workspace 3 output $fm
+workspace 4 output $fm
+workspace 5 output $fm
+workspace 6 output $fm
+workspace 7 output $fm
+workspace 8 output $fm 
+workspace 9 output $fm 
+workspace 10 output $fm 
+workspace 11 output $fm
+workspace 12 output $fm
+workspace 13 output $fm
+workspace 14 output $fm
+workspace 15 output $fm
+workspace 16 output $sm
+workspace 17 output $sm
+workspace 18 output $sm 
+workspace 19 output $sm 
+workspace 20 output $sm 
+workspace 21 output $sm 
+workspace 22 output $sm 
+workspace 23 output $sm 
+workspace 24 output $sm 
+workspace 25 output $sm 
+workspace 26 output $sm 
+workspace 27 output $sm 
+workspace 28 output $sm 
+workspace 29 output $sm 
+
+assign [class="libreoffice-calc"] $ws1
+# assign [class="Google-chrome" instance="google-chrome"] $ws2
+assign [class="Anki" instance="anki"] $ws5
+assign [class="discord" instance="discord"] $ws9
+assign [class="TelegramDesktop" instance="Telegram"] $ws9
+assign [class="Code" instance="code"] $ws4
+assign [class="rnote" instance="rnote"] $ws3
+assign [class="obsidian" instance="obsidian"] $ws7
+assign [class="keypunch" instance="keypunch"] $ws22
+
+#PDFs
+# Terminals
+# Firefox
+# VSCode
+# calendar
+# libreoffice-calc
+set $ws1 1 
+set $ws2 "2" 
+set $ws3 "3" 
+# rnote
+set $ws4 "4" 
+set $ws5 "5" 
+# Anki
+set $ws6 "6" 
+set $ws7 "7" 
+# Obsidian
+set $ws8 "8" 
+set $ws9 "9" 
+# Discord, Telegram
+set $ws10 "10"
+set $ws11 "11"
+set $ws12 "12"
+set $ws13 "13"
+set $ws14 "14"
+set $ws15 "15"
+set $ws16 "16"
+# Project 1
+set $ws17 "17"
+# Project 2
+set $ws18 "18"
+# Project 3
+set $ws19 "19"
+# Project 4
+set $ws20 "20"
+# Project 5
+set $ws21 21
+# Typing
+set $ws22 22
+set $ws23 23
+set $ws24 24
+set $ws25 25
+set $ws26 26
+set $ws27 27
+set $ws28 28
+set $ws29 29
+
+#exec --no-startup-id obsidian
+# exec --no-startup-id google-chrome
+# exec --no-startup-id rnote
+#exec --no-startup-id anki
+# exec --no-startup-id discord
+#exec --no-startup-id Telegram
+
+# bindsym $mods+a workspace 1:<span foreground="red">vim</span>
+bindsym $mods+a workspace number 1 something
+bindsym $mods+s workspace $ws2
+bindsym $mods+d workspace $ws3
+bindsym $mods+f workspace $ws4
+bindsym $mods+g workspace $ws5
+bindsym $mods+q workspace $ws6
+bindsym $mods+w workspace $ws7
+bindsym $mods+e workspace $ws8
+bindsym $mods+r workspace $ws9
+bindsym $mods+t workspace $ws10
+bindsym $mods+z workspace $ws11
+bindsym $mods+x workspace $ws12
+bindsym $mods+c workspace $ws13
+bindsym $mods+v workspace $ws14
+bindsym $mods+b workspace $ws15
+
+bindsym $mods+h workspace $ws16
+bindsym $mods+j workspace $ws17
+bindsym $mods+k workspace $ws18
+bindsym $mods+l workspace $ws19
+bindsym $mods+apostrophe workspace $ws20
+bindsym $mods+y workspace $ws21
+bindsym $mods+u workspace $ws22
+bindsym $mods+i workspace $ws23
+bindsym $mods+o workspace $ws24
+bindsym $mods+p workspace $ws25
+bindsym $mods+n workspace $ws26
+bindsym $mods+m workspace $ws27
+bindsym $mods+comma workspace $ws28
+bindsym $mods+period workspace $ws29
+
+bindsym $mods+Shift+a move container to workspace $ws1, workspace $ws1
+bindsym $mods+Shift+s move container to workspace $ws2, workspace $ws2
+bindsym $mods+Shift+d move container to workspace $ws3, workspace $ws3
+bindsym $mods+Shift+f move container to workspace $ws4, workspace $ws4
+bindsym $mods+Shift+g move container to workspace $ws5, workspace $ws5
+bindsym $mods+Shift+q move container to workspace $ws6, workspace $ws6
+bindsym $mods+Shift+w move container to workspace $ws7, workspace $ws7
+bindsym $mods+Shift+e move container to workspace $ws8, workspace $ws8
+bindsym $mods+Shift+r move container to workspace $ws9, workspace $ws9
+bindsym $mods+Shift+t move container to workspace $ws10, workspace $ws10
+bindsym $mods+Shift+z move container to workspace $ws11, workspace $ws11
+bindsym $mods+Shift+x move container to workspace $ws12, workspace $ws12
+bindsym $mods+Shift+c move container to workspace $ws13, workspace $ws13
+bindsym $mods+Shift+v move container to workspace $ws14, workspace $ws14
+bindsym $mods+Shift+b move container to workspace $ws15, workspace $ws15
+
+bindsym $mods+Shift+h move container to workspace $ws16, workspace $ws16
+bindsym $mods+Shift+j move container to workspace $ws17, workspace $ws17
+bindsym $mods+Shift+k move container to workspace $ws18, workspace $ws18
+bindsym $mods+Shift+l move container to workspace $ws19, workspace $ws19
+bindsym $mods+Shift+apostrophe move container to workspace $ws20, workspace $ws20
+bindsym $mods+Shift+y move container to workspace $ws21, workspace $ws21
+bindsym $mods+Shift+u move container to workspace $ws22, workspace $ws22
+bindsym $mods+Shift+i move container to workspace $ws23, workspace $ws23
+bindsym $mods+Shift+o move container to workspace $ws24, workspace $ws24
+bindsym $mods+Shift+p move container to workspace $ws25, workspace $ws25
+bindsym $mods+Shift+n move container to workspace $ws26, workspace $ws26
+bindsym $mods+Shift+m move container to workspace $ws27, workspace $ws27
+bindsym $mods+Shift+comma move container to workspace $ws28, workspace $ws28
+bindsym $mods+Shift+period move container to workspace $ws29, workspace $ws29
+
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [class="KeePassXC"] floating enable
+for_window [class="vlc"] floating enable
+for_window [class="Arandr"] floating enable
+for_window [class="org.gnome.clocks"] floating enable
+for_window [class="org.gnome.SoundRecorder"] floating enable
+for_window [class="Org.gnome.Nautilus"] floating enable
+for_window [class="org.gnome.Nautilus"] floating enable
+for_window [class="Gedit"] floating enable
+for_window [class="Eog"] floating enable
+for_window [class="Gnome-pomodoro"] floating enable
+for_window [class="Gnome-calculator"] floating enable
+for_window [class="qBittorrent"] floating enable
+
+
+bindsym KP_Right exec --no-startup-id "autorandr --change"
+
+exec --no-startup-id i3-back
+bindcode 61 [con_mark=_back] focus
+
+bindsym $mod+h focus left 
+bindsym $mod+j focus down
+bindsym $mod+k focus up 
+bindsym $mod+l focus right 
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+# bindsym --release F2 exec --no-startup-id xdotool key --clearmodifiers ctrl+c
+# bindsym --release F3 exec --no-startup-id xdotool key --clearmodifiers ctrl+v
+# bindsym --release F4 exec --no-startup-id sh -c 'firefox "https://www.google.com/search?q=$(xclip -o)"'
+
+
+bindcode 133 workspace back_and_forth
+bindsym $mod+c workspace prev_on_output
+bindsym $mod+v workspace next_on_output
+# bindsym $mod+Shift+c move container to workspace prev_on_output ; workspace prev_on_output
+# bindsym $mod+Shift+v move container to workspace next_on_output ; workspace next_on_output
+bindsym $mod+d focus output left
+bindsym $mod+p move workspace to output right
+
+bindsym $mod+q kill
+bindsym $mod+i split h
+bindsym $mod+u split v
+bindsym $mod+Shift+i split h ; layout tabbed
+bindsym $mod+Shift+u split v ; layout stacking
+bindsym $mod+f fullscreen toggle
+bindsym $mod+w layout tabbed
+bindsym $mod+s layout stacking
+bindsym $mod+e layout toggle split
+
+bindsym $mod+a focus parent
+bindsym $mod+Shift+a focus child
+bindsym $mod+space floating toggle
+bindsym $mod+Shift+apostrophe sticky toggle
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+g resize shrink width 3 px or 3 ppt
+bindsym $mod+Shift+f resize grow height 3 px or 3 ppt
+bindsym $mod+Shift+d resize shrink height 3 px or 3 ppt
+bindsym $mod+Shift+s resize grow width 3 px or 3 ppt
+bindsym $mod+button2 --whole-window floating toggle
+bindsym $mod+Shift+z mark "alpha", move scratchpad
+bindsym $mod+z [con_mark="alpha"] scratchpad show
+bindsym $mod+Shift+x mark "beta", move scratchpad
+bindsym $mod+x [con_mark="beta"] scratchpad show
+bindsym $mod+t exec --no-startup-id rofimoji
+# bindsym $mod+Shift+b move container to workspace back_and_forth
+
+# bindsym $mod+Shift+t 
+# bindsym $mod+semicolon 
+bindsym $mod+Shift+b bar hidden_state toggle
+# bindsym $mod+n move position mouse
+bindsym $mod+n exec --no-startup-id open ~/Downloads
+
+# Doesn't work?
+bindsym $mod+period focus mode_toggle
+bindsym $mod+y move container to output left ; focus output left
+bindsym $mod+comma exec i3-input -F 'rename workspace to "%s"' -P 'New name for this workspace: '
+bindsym $mod+m exec i3-input -F '[con_mark="%s"] focus' -l 1 -P 'Goto: '
+bindsym $mod+Shift+m exec i3-input -F 'mark %s' -l 1 -P 'Mark: '
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+BackSpace exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+  output HDMI-A-0
+    colors {
+            background #0E1915
+            statusline #73BBC5 #that neon blue
+            separator #37504C
+            focused_workspace  #0E1915 #73BBC5 #0E1915
+            active_workspace   #333333 #5f676a #ffffff
+            inactive_workspace #333333 #222222 #888888
+            urgent_workspace   #2f343a #900000 #ffffff
+        }
+	hidden_state show
+	status_command i3status
+}
+
+# Enable tapping X11
+exec --no-startup-id "xinput set-prop 'ELAN1200:00 04F3:30F7 Touchpad' 323 1"
+# Disable "DisableWhileTyping"
+exec --no-startup-id "xinput set-prop 'ELAN1200:00 04F3:30F7 Touchpad' 331 0"
+# # Middle click Enable touchpad
+exec --no-startup-id "xinput set-prop 'ELAN1200:00 04F3:30F7 Touchpad' 336 1"
+# Natural scrolling enable
+exec --no-startup-id "xinput set-prop 'ELAN1200:00 04F3:30F7 Touchpad' 296 1"
+# repeat delay, repeat rate
+exec --no-startup-id "xset r rate 290 30"
+
+exec --no-startup-id "sleep 2 ; setxkbmap -layout e3l,r3l -option grp:alt_space_toggle"
