@@ -1,0 +1,106 @@
+partial alphanumeric_keys modifier_keys
+
+
+xkb_symbols "e3l" {
+
+    name[Group1] = "English (my_layout)";
+    name[Group2] = "Group1";
+    include "us(intl)"
+
+    key.type[Group1] = "ONE_LEVEL";
+    key <TLDE> { [ grave     ] };
+    key <AB02> { [ Alt_L     ] };
+    key <AB03> { [ Super_L   ] };
+    key <AB04> { [ Control_L ] };
+    key <CAPS> { [ semicolon ] };     
+    // key <FK03> { [ Caps_Lock ] };
+    // key <FK04> { [ Lock      ] };
+    // key <FK11> { [ minus     ] };
+    // key <FK12> { [ plus      ] };
+
+    key <AB06> { [ F18 ] };
+    key <AB07> { [ F19 ] };
+
+    // key <AB07> { [ VoidSymbol ],
+    //         actions[Group1]=[ RedirectKey(key=<AC04>, modifiers=Control)] 
+    //     };
+
+    // key <AB05> { [ VoidSymbol ],
+    //         actions[Group1]=[ RedirectKey(key=<AC03>, modifiers=Control)] 
+    //     };
+
+    key <RTRN> { [ slash     ] };
+    key <AB08> { [ NoSymbol  ] };
+    // key <RTRN> { [ Delete    ] };
+    
+    key <LALT> { [ F15       ] };
+    key <KPAD> { [ plus      ] };
+    key <KPSU> { [ minus     ] };
+    key <BKSL> { [ Return    ] };
+
+    modifier_map Control { <AB04> };
+    modifier_map Mod1    { <AB02> };
+    modifier_map Mod4    { <AB03> };
+    // modifier for i3 changing workspaces
+    modifier_map Mod2    {   F15  };
+
+    // key <AB10> { [ F20 ] }; 
+    // key <RTRN> { [ ISO_Level3_Latch, NoSymbol ] }; // Sym Modifier
+    // key <TAB> { symbols[Group1]=[ NoSymbol,NoSymbol,NoSymbol,NoSymbol],
+    //            actions[Group1]=[SetMods(mods=LevelThree+Shift),NoAction(),NoAction(),NoAction()]
+    //          };
+
+    key.type[Group1] = "EIGHT_LEVEL_SEMIALPHABETIC";
+    //             ...         Shift     Sym           Tab            Num             RCTL
+
+    key <AE01> { [ q,          Q,        question,     F11,           question     ] };
+    key <AE02> { [ w,          W,        asterisk,     F12,           bracketleft  ] };
+    key <AE03> { [ e,          E,        plus,         F3,            braceleft    ] };
+    key <AE04> { [ r,          R,        braceleft,    F4,            braceright   ] };
+    key <AE05> { [ t,          T,        dollar,       bracketright,  bracketright ] };
+    key <AE06> { [ y,          Y,        asciicircum,  ampersand,     6            ] };
+    key <AE07> { [ t,          T,        bracketright, bracketright,  bracketright ] };
+    key <AE08> { [ y,          Y,        asciicircum,  ampersand,     ampersand    ] };
+    key <AE09> { [ u,          U,        braceright,   dollar,        dollar       ], Overlay1 = <HOME> };
+    key <AE10> { [ i,          I,        minus,        minus,         minus        ], Overlay1 = <END>  };
+    key <AE11> { [ o,          O,        percent,      grave,         grave        ], Overlay1 = <FK10> };
+    key <AE12> { [ p,          P,        at,           at,            at           ], Overlay1 = <FK09> };
+
+    key <AD01> { [ a,          A,        exclam,       F2,            1            ], OVerlay1 = <LWIN> };
+    key <AD02> { [ s,          S,        less,         2,             2            ], Overlay1 = <AB02> };
+    key <AD03> { [ d,          D,        parenleft,    3,             3            ], Overlay1 = <LFSH> };
+    key <AD04> { [ f,          F,        parenright,   4,             4            ], Overlay1 = <LCTL> };
+    key <AD05> { [ g,          G,        greater,      5,             5            ] };
+    key <AD06> { [ h,          H,        numbersign,   6,             6            ] };
+    key <AD07> { [ g,          G,        greater,      5,             5            ] };
+    key <AD08> { [ h,          H,        numbersign,   6,             6            ], Overlay1 = <LEFT> };
+    key <AD09> { [ j,          J,        equal,        Tab,           7            ], Overlay1 = <DOWN> };
+    key <AD10> { [ k,          K,        quotedbl,     Return,        8            ], Overlay1 = <UP>   };
+    key <AD11> { [ l,          L,        colon,        9,             9            ], Overlay1 = <RGHT> };
+    key <AD12> { [ apostrophe, quotedbl, apostrophe,   0,             0            ], Overlay1 = <DELE>  };
+
+    key <AC01> { [ z,          Z,        ampersand,    asciicircum,   asciicircum  ] };
+    key <AC02> { [ x,          X,        asciitilde,   space,         space        ] };
+    key <AC03> { [ c,          C,        bar,          bar,           Up           ] };
+    key <AC04> { [ v,          V,        bracketleft,  asterisk,      asterisk     ] };
+    key <AC05> { [ b,          B,        backslash,    backslash,     backslash    ] };
+    key <AC06> { [ n,          N,        slash,        plus,          plus         ] };
+    key <AC07> { [ b,          B,        backslash,    backslash,     backslash    ] };
+    key <AC08> { [ n,          N,        bracketright, plus,          plus         ], Overlay1 = <PGUP> };
+    key <AC09> { [ m,          M,        underscore,   underscore,    underscore   ], Overlay1 = <PGDN> };
+    key <AC10> { [ comma,      comma,    comma,        comma,         comma        ] };
+    key <AC11> { [ period,     period,   period,       period,        period       ] };
+
+    key <AB09> {
+	type[Group1] = "THREE_LEVEL",
+	symbols[Group1] = [ VoidSymbol, VoidSymbol, VoidSymbol, VoidSymbol, VoidSymbol, VoidSymbol, VoidSymbol, VoidSymbol ], // also possible with VoidSymbol or NoSymbol
+	actions[Group1] = [ SetControls(controls=Overlay1), SetControls(controls=Overlay1), LockControls(controls=Overlay1) ]
+    };
+
+    key <RALT> { [ ISO_Level2_Latch, NoSymbol ] }; // Shift (Latched)
+    key <AB08> { [ ISO_Level5_Latch, NoSymbol ] }; // Num Modifier
+    key <RCTL> { [ ISO_Level3_Latch, NoSymbol ] }; // Sym Modifier
+
+    // key <AB02> { [ F16 ] };
+    key <AB05> { [ F17 ] };
+};
